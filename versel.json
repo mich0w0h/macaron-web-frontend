@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://macaron-web-backend.deno.dev/:path*"
+    }
+  ]
+}

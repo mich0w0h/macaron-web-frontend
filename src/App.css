@@ -1,0 +1,78 @@
+body {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 0.8vw;
+    
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: #F3EED5;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.character-section {
+    position: relative;
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.character-section::before {
+    content: "";
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20vw;
+    height: 20vw;
+    border: 2vw solid #fcfcfc;
+    border-radius: 50%;
+    background-color: #fcfcfc;
+    z-index: -1; /* Ensure the circle is behind the character */
+}
+
+
+.comment-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    z-index: 3;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 70%;
+        
+    }
+    .character-section {
+        width: 100%;
+    }
+
+    .comment-section {
+        width: 100%;
+    }
+
+    .character-section::before {
+        width: 85vw;
+        height: 85vw;
+    }
+
+    .comment-section {
+        top: 0%;
+    }
+  }
