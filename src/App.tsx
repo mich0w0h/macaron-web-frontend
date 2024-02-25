@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Div100vh from "react-div-100vh";
 import CharacterDisplay from "./components/CharacterDisplay";
 import CommentInput from "./components/CommentInput";
 import CommentList from "./components/CommentList";
@@ -37,20 +38,25 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <div className="character-section">
-        <SpeechBalloon
-          message={characterResponse.text}
-          isVisible={isVisible}
-          onHide={hideBalloon}
-        />
-        <CharacterDisplay />
+    <Div100vh>
+      <div className="container">
+        <div className="character-section">
+          <SpeechBalloon
+            message={characterResponse.text}
+            isVisible={isVisible}
+            onHide={hideBalloon}
+          />
+          <CharacterDisplay />
+        </div>
+        <div className="comment-section">
+          <CommentList
+            comments={userComments}
+            maxComments={maxCommentsToShow}
+          />
+          <CommentInput onCommentSubmit={handleUserCommentSubmit} />
+        </div>
       </div>
-      <div className="comment-section">
-        <CommentList comments={userComments} maxComments={maxCommentsToShow} />
-        <CommentInput onCommentSubmit={handleUserCommentSubmit} />
-      </div>
-    </div>
+    </Div100vh>
   );
 };
 
