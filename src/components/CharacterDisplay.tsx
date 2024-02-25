@@ -1,32 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { ImageLoadContext } from "../context";
 import CharacterEar from "./CharacterEar";
 import CharacterFace from "./CharacterFace";
 import "./CharacterDisplay.css";
 import CharacterBodyImg from "../assets/character-body.png";
 
 const CharacterDisplay: React.FC = () => {
-  const [loadedBodyImg, setLoadedBodyImg] = useState<string | null>(null);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = CharacterBodyImg;
-    img.onload = () => {
-      console.log("CharacterBodyImage loaded");
-      setLoadedBodyImg(CharacterBodyImg);
-    };
-  }, []);
-
+  const { setImageLoaded } = React.useContext(ImageLoadContext);
   return (
     <div className="character">
-      {loadedBodyImg !== null ? (
-        <img
-          src={loadedBodyImg}
-          alt="Character body"
-          className="character-body"
-        />
-      ) : (
-        <div className="character-body"></div>
-      )}
+      <img
+        src={CharacterBodyImg}
+        onLoad={() => {
+          setImageLoaded(true);
+          console.log("Character body image loaded");
+        }}
+        onError={() => {
+          console.error("Failed to load the character body image");
+        }}
+        alt="Character body"
+        className="character-body"
+      />
 
       <CharacterEar side="left" />
       <CharacterEar side="right" />

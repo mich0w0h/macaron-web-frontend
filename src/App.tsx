@@ -7,9 +7,12 @@ import SpeechBalloon from "./components/SpeechBalloon";
 import { type CharacterResponse, type UserComment } from "../types";
 import useSpeechBalloon from "./hooks/useSpeechBalloonVisibility";
 import callApi from "./api";
+import { ImageLoadContext } from "./context";
 import "./App.css";
 
 const App: React.FC = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const [userComments, setUserComments] = useState<UserComment[]>([]);
   const [characterResponse, setCharacterResponse] = useState<CharacterResponse>(
     { text: "" },
@@ -38,25 +41,32 @@ const App: React.FC = () => {
   };
 
   return (
-    <Div100vh>
-      <div className="container">
-        <div className="character-section">
-          <SpeechBalloon
-            message={characterResponse.text}
-            isVisible={isVisible}
-            onHide={hideBalloon}
-          />
-          <CharacterDisplay />
+    <ImageLoadContext.Provider value={{ imageLoaded, setImageLoaded }}>
+      <Div100vh>
+        <div className="container">
+          <div className="character-section">
+            <SpeechBalloon
+              message={characterResponse.text}
+              isVisible={isVisible}
+              onHide={hideBalloon}
+            />
+            <CharacterDisplay />
+          </div>
+          <div className="comment-section">
+            <CommentList
+              comments={userComments}
+              maxComments={maxCommentsToShow}
+            />
+            <CommentInput onCommentSubmit={handleUserCommentSubmit} />
+          </div>
         </div>
-        <div className="comment-section">
-          <CommentList
-            comments={userComments}
-            maxComments={maxCommentsToShow}
-          />
-          <CommentInput onCommentSubmit={handleUserCommentSubmit} />
-        </div>
-      </div>
-    </Div100vh>
+        {!imageLoaded && (
+          <div
+            className={`loading-overlay ${imageLoaded ? "fade-out" : ""}`}
+          ></div>
+        )}
+      </Div100vh>
+    </ImageLoadContext.Provider>
   );
 };
 
