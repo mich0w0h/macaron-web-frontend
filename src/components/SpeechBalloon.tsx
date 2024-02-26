@@ -18,7 +18,7 @@ const SpeechBalloon: React.FC<SpeechBalloonProps> = ({
     if (isVisible) {
       const hideTimeout = setTimeout(() => {
         onHide(); // Notify App to hide the balloon
-      }, 2000);
+      }, 5000);
 
       return () => {
         clearTimeout(hideTimeout);
