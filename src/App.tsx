@@ -26,8 +26,7 @@ const App: React.FC = () => {
     const updatedComments: UserComment[] = [...userComments, userComment];
     setUserComments(updatedComments.slice(-maxCommentsToShow));
 
-    const apiUrl = import.meta.env.VITE_API_BASE_URL;
-    callApi(`${apiUrl}/generate`, "POST", userComment)
+    callApi(`/api/generate`, "POST", userComment)
       .then((response) => {
         setCharacterResponse(response.data as CharacterResponse);
       })
