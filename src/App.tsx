@@ -60,11 +60,9 @@ const App: React.FC = () => {
             <CommentInput onCommentSubmit={handleUserCommentSubmit} />
           </div>
         </div>
-        {!imageLoaded && (
-          <div
-            className={`loading-overlay ${imageLoaded ? "fade-out" : ""}`}
-          ></div>
-        )}
+        <div
+          className={`loading-overlay ${imageLoaded ? "fade-out" : ""}`}
+        ></div>
       </Div100vh>
     </ImageLoadContext.Provider>
   );
