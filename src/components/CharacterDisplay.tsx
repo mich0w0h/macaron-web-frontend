@@ -15,7 +15,6 @@ const CharacterDisplay: React.FC = () => {
           // wait for 0.5 seconds to show the character
           setTimeout(() => {
             setImageLoaded(true);
-            console.log("Character body image loaded");
           }, 500);
         }}
         onError={() => {
