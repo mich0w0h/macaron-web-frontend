@@ -62,6 +62,12 @@ const App: React.FC = () => {
         </div>
         <div
           className={`loading-overlay ${imageLoaded ? "fade-out" : ""}`}
+          onTransitionEnd={(e) => {
+            // Hide the loading overlay when the image is loaded and the overlay faded out
+            if (e.propertyName === "opacity" && imageLoaded) {
+              e.currentTarget.style.display = "none";
+            }
+          }}
         ></div>
       </Div100vh>
     </ImageLoadContext.Provider>
