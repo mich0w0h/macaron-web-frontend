@@ -29,7 +29,7 @@ const CommentInput: React.FC<CommentInputProps> = ({ onCommentSubmit }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Type your comment..."
+          placeholder="コメントを入力してね"
           value={comment.text}
           onChange={handleChange}
           maxLength={25}
