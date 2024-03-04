@@ -2,6 +2,10 @@
 
 This is the frontend code for the Macaron web app.
 
+Ready for a treat? 🍬 [Play with the app here](https://macaron-web.vercel.app/) and have fun! 🎉
+
+For more information about this project, check out this [blog post](https://mich0w0h.hatenablog.com/entry/2024/02/27/120204).
+
 ## Setup
 
 - Ensure Node.js is installed.
