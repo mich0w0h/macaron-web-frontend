@@ -1,6 +1,6 @@
-# Frontend
+# macaron-web-frontend
 
-This directory contains the frontend code for the Macaron web app.
+This is the frontend code for the Macaron web app.
 
 ## Setup
 
